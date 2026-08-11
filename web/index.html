@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#14100e">
+<title>Черемша: Госхайп</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+</head>
+<body data-tab="game">
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">🌿</span>
+    <span>
+      <b>ЧЕРЕМША</b>
+      <i>госхайп · мемкомбинат №1</i>
+    </span>
+  </div>
+
+  <div class="stats">
+    <div class="stat stat-main">
+      <span class="stat-label">ХАЙП</span>
+      <b id="statHype">0</b>
+      <span class="stat-sub" id="statRate">0 / сек</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">ПОДПИСЧИКИ</span>
+      <b id="statSubs">0</b>
+      <span class="stat-sub" id="statStage">Двор</span>
+    </div>
+    <div class="stat stat-cringe" title="Автоматика копит кринж, живые клики его сбивают">
+      <span class="stat-label">КРИНЖ</span>
+      <b id="statCringe">0%</b>
+      <span class="bar"><i id="barCringe"></i></span>
+    </div>
+  </div>
+
+  <button id="btnReset" class="btn btn-ghost btn-sm" title="Начать заново">Сброс</button>
+</header>
+
+<div class="stagebar">
+  <div class="stagebar-fill" id="stageFill"></div>
+  <div class="stagebar-text">
+    <b id="stageName">Двор</b>
+    <span id="stageTag">Мем знают три подъезда.</span>
+    <em id="stageNext"></em>
+  </div>
+</div>
+
+<main class="layout">
+
+  <!-- ---------------------------------------------------------- кликер -->
+  <section class="panel panel-game" data-panel="game">
+    <div id="eventBanner" class="event-banner" hidden></div>
+
+    <div class="clicker">
+      <div id="rhythm" class="rhythm" hidden>
+        <span class="rhythm-dot"></span>
+        <span class="rhythm-label">бит GAZAN — кликай в такт</span>
+      </div>
+
+      <button id="cheremsha" class="cheremsha" aria-label="Погладить Черемшу">
+        <div id="cheremshaArt" class="cheremsha-art"></div>
+      </button>
+
+      <div class="click-hint">
+        <b id="clickPower">+1</b> за поглаживание
+        <span id="clickExtras"></span>
+      </div>
+      <div id="floaters" class="floaters" aria-hidden="true"></div>
+    </div>
+
+    <div class="minilog" id="minilog"></div>
+  </section>
+
+  <!-- ------------------------------------------------------- улучшения -->
+  <section class="panel panel-upgrades" data-panel="upgrades">
+    <h2>Улучшения <span class="hint" id="upgHint"></span></h2>
+    <div id="upgrades" class="list"></div>
+  </section>
+
+  <!-- ---------------------------------------------------------- магазин -->
+  <section class="panel panel-shop" data-panel="shop">
+    <h2>Витрина <span class="hint">макет монетизации</span></h2>
+    <p class="note">Прототип: реальная оплата не подключена. Работает только
+      «ролик Петровича» — чтобы показать модель rewarded-ad живьём.</p>
+    <div id="shop" class="list"></div>
+
+    <h3>Гардероб</h3>
+    <div id="skins" class="skins"></div>
+
+    <h3>Сезон «Тайга»</h3>
+    <div id="battlepass" class="bp"></div>
+  </section>
+
+  <!-- ----------------------------------------------------------- журнал -->
+  <section class="panel panel-log" data-panel="log">
+    <h2>Журнал</h2>
+    <div id="log" class="log"></div>
+  </section>
+
+</main>
+
+<nav class="tabbar">
+  <button data-tab="game"><span>🌿</span>Черемша</button>
+  <button data-tab="upgrades"><span>⬆️</span>Улучшения</button>
+  <button data-tab="shop"><span>🛒</span>Витрина</button>
+  <button data-tab="log"><span>📜</span>Журнал</button>
+</nav>
+
+<!-- «рекламный» ролик -->
+<div class="modal" id="adModal" hidden>
+  <div class="modal-box ad-box">
+    <div class="ad-screen">
+      <div class="ad-art">🔧</div>
+      <p>Петрович показывает, как Черемша заменяет пылесос.</p>
+      <p class="ad-slogan">Тихо, не спеша, без суеты.</p>
+    </div>
+    <div class="ad-progress"><i id="adBar"></i></div>
+    <p class="note" id="adNote">Ролик-макет. Никакая реклама не загружается.</p>
+  </div>
+</div>
+
+<!-- оффлайн-доход -->
+<div class="modal" id="offlineModal" hidden>
+  <div class="modal-box">
+    <h3>📋 Госплан выполнен</h3>
+    <div id="offlineBody"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" data-close-offline>Принять смену</button>
+    </div>
+  </div>
+</div>
+
+<!-- макет покупки -->
+<div class="modal" id="mockModal" hidden>
+  <div class="modal-box">
+    <h3 id="mockTitle">Витрина</h3>
+    <div id="mockBody"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" data-close-mock>Понятно</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>
